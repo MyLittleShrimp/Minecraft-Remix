@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+kind = 12
+label = "凋灵骷髅"
+max_health = 32
+patrol_speed = 26.0
+chase_speed = 88.0
+awareness = 320.0
+patrol_radius = 80.0
+contact_damage = 0
+aim_seconds = 0.85
+shot_recovery = 1.2

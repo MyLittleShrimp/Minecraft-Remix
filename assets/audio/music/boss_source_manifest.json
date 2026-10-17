@@ -1,0 +1,58 @@
+[
+  {
+    "title": "白骨战鼓",
+    "track_id": "boss_captain",
+    "source": "方块远征 OST/白骨战鼓 V01.mp3",
+    "asset": "assets/audio/music/boss_01_captain.mp3",
+    "bytes": 2281566,
+    "sha256": "b44c85ac94179523ad562f9375c46e0f7696044c7878f6451dd31ae7579beaef"
+  },
+  {
+    "title": "毒雾王冠",
+    "track_id": "boss_queen",
+    "source": "方块远征 OST/毒雾王冠 V01.mp3",
+    "asset": "assets/audio/music/boss_02_queen.mp3",
+    "bytes": 3825486,
+    "sha256": "a30bdb3c8310aed5238117290651ba053f34822fb1c8607aa57dffe268f9496b"
+  },
+  {
+    "title": "撼地狂奔",
+    "track_id": "boss_ravager",
+    "source": "方块远征 OST/撼地狂奔 V01.mp3",
+    "asset": "assets/audio/music/boss_03_ravager.mp3",
+    "bytes": 2614506,
+    "sha256": "8aafb7dd3cf7846efc9bece69e2a64cc7abc401cfdcef5e8d3297783b3332b42"
+  },
+  {
+    "title": "深渊之眼",
+    "track_id": "boss_guardian",
+    "source": "方块远征 OST/深渊之眼 V01.mp3",
+    "asset": "assets/audio/music/boss_04_guardian.mp3",
+    "bytes": 4471336,
+    "sha256": "5143f964f3cf1fa17ebdafc3b379199789b8191a6e2eda1bf7bb3f9ca5494483"
+  },
+  {
+    "title": "瞬影追猎",
+    "track_id": "boss_rift",
+    "source": "方块远征 OST/瞬影追猎 V01.mp3",
+    "asset": "assets/audio/music/boss_05_rift.mp3",
+    "bytes": 3367042,
+    "sha256": "44b5115b34baaad794258799dd8d182253bc53f06d33c2dd0e828b48acebf980"
+  },
+  {
+    "title": "三首灾厄",
+    "track_id": "boss_wither",
+    "source": "方块远征 OST/三首灾厄 V01.mp3",
+    "asset": "assets/audio/music/boss_06_wither.mp3",
+    "bytes": 3667555,
+    "sha256": "08a097cf9998c95ee64b40316b1ff1bd25579119ab3b7e252f913499257e37ca"
+  },
+  {
+    "title": "终焉之翼",
+    "track_id": "boss_dragon",
+    "source": "方块远征 OST/终焉之翼 V01.mp3",
+    "asset": "assets/audio/music/boss_07_dragon.mp3",
+    "bytes": 4846974,
+    "sha256": "52906a3d95a78b2bb4dccad4a658f0d10e468d3e47b034195ba49b3f3d642924"
+  }
+]

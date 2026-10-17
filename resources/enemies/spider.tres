@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+kind = 3
+label = "林地蜘蛛"
+max_health = 12
+patrol_speed = 30.0
+chase_speed = 75.0
+awareness = 230.0
+patrol_radius = 48.0
+contact_damage = 2

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CaptainData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemies/captain_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+kind = 1
+label = "骷髅队长"
+max_health = 120
+contact_damage = 0
+arrow_speed = 280.0
+awareness = 600.0

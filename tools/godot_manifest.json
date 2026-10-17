@@ -1,0 +1,21 @@
+{
+  "version": "4.7.2",
+  "release_url": "https://api.github.com/repos/godotengine/godot-builds/releases/tags/4.7.2-stable",
+  "verified_on": "2026-10-02",
+  "assets": [
+    {
+      "name": "Godot_v4.7.2-stable_win64.exe.zip",
+      "slug": "win64.exe.zip",
+      "platform": "windows.64",
+      "size": 86013866,
+      "sha256": "731980f9608d61333e5baf54a2ef17210acc7a538446c0cb9969f002aca1e953"
+    },
+    {
+      "name": "Godot_v4.7.2-stable_export_templates.tpz",
+      "slug": "export_templates.tpz",
+      "platform": "templates",
+      "size": 1281349702,
+      "sha256": "f298490b8d44d934be425a5a65a51bf15f422428b229a06a6e11d9ffea248011"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="PiglinData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemies/piglin_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+kind = 13
+role = 0
+label = "金剑蛮兵"
+max_health = 24
+chase_speed = 112.0
+awareness = 360.0
+contact_damage = 0
+reach = 46.0
+damage = 3
+aim_seconds = 0.55
+shot_recovery = 0.7

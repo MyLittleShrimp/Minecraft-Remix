@@ -1,0 +1,78 @@
+; Minecraft Remix — M0 Windows bootstrap.
+; Toolchain is pinned in tools/bootstrap_godot.py.
+config_version=5
+
+[application]
+config/name="Minecraft Remix"
+config/version="0.2.0-boss-music.1"
+run/main_scene="res://scenes/main_menu.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="res://assets/branding/launcher.png"
+
+[autoload]
+ControlSettings="*res://scripts/input/control_settings.gd"
+MusicDirector="*res://scripts/audio/music_director.gd"
+RunProgress="*res://scripts/progression/campaign_progress.gd"
+SaveManager="*res://scripts/progression/save_manager.gd"
+ScreenLayout="*res://scripts/ui/screen_layout.gd"
+
+[display]
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/stretch/scale_mode="fractional"
+
+[input]
+move_left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"keycode":65)]
+}
+move_right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"keycode":68)]
+}
+aim_up={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"keycode":87)]
+}
+aim_down={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"keycode":83)]
+}
+jump={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"keycode":32)]
+}
+attack={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"keycode":74)]
+}
+switch_weapon={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"keycode":75)]
+}
+ultimate={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"keycode":76)]
+}
+interact={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"keycode":69)]
+}
+pause={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"keycode":4194305)]
+}
+
+[physics]
+common/physics_ticks_per_second=60
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=false
+textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.055, 0.11, 0.15, 1)

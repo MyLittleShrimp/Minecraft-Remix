@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/combat/weapon_data.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/weapons/multishot.tres" id="2"]
+[resource]
+script = ExtResource("1")
+id = &"bow"
+label = "弓"
+kind = 1
+damage = 4
+ultimate = ExtResource("2")

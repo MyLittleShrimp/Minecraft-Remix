@@ -1,0 +1,56 @@
+[
+  {
+    "source": "方块远征 main theme.mp3",
+    "asset": "assets/audio/music/00_menu.mp3",
+    "bytes": 1585416,
+    "sha256": "70A0E3F20CD81544F7103B604F0E0FB6D24ACDCACC18E0C538ECCBCA78093843"
+  },
+  {
+    "source": "1. 林地遗迹《晨光中的第一跃》.mp3",
+    "asset": "assets/audio/music/01_forest.mp3",
+    "bytes": 3258565,
+    "sha256": "C3E0E09252F3C0C8DDF9EC8DC9DCF30C9A73F726E9485A94C498A8FCFCC5E2C9"
+  },
+  {
+    "source": "2. 蛛影林径《月下蛛影》.mp3",
+    "asset": "assets/audio/music/02_spiderwood.mp3",
+    "bytes": 3026800,
+    "sha256": "C96D67862A248166C46B34EF30D0BD2A1E9DCFB9A12DADB728BE89D55858B673"
+  },
+  {
+    "source": "3. 废弃矿道《裂岩节拍》.mp3",
+    "asset": "assets/audio/music/03_mine.mp3",
+    "bytes": 2453655,
+    "sha256": "345BD1DCAF29581A0E5CAAB184325D170B57F09DB68C668B73339328DF761B06"
+  },
+  {
+    "source": "4. 潮汐遗迹《深蓝回声》.mp3",
+    "asset": "assets/audio/music/04_tide.mp3",
+    "bytes": 4575431,
+    "sha256": "9D560CACF9AA13EBF6042248918C395F554522ACD8F786F68F622DF749C44CEB"
+  },
+  {
+    "source": "5. 诡异边界《紫焰之间》.mp3",
+    "asset": "assets/audio/music/05_warped.mp3",
+    "bytes": 4328840,
+    "sha256": "50D1A807B270DEC9B09FAE8BFFAD3281C54997D0BCA42E86496F93245D7725B9"
+  },
+  {
+    "source": "6. 堡垒核心《熔火与灵魂》.mp3",
+    "asset": "assets/audio/music/06_fortress.mp3",
+    "bytes": 1941469,
+    "sha256": "FDF06D8C2A1A2B3A6938B345A690ADDADADC220A67E7106867994B4A4919231D"
+  },
+  {
+    "source": "7. 末地·巨龙之巢《最后的天空》.mp3",
+    "asset": "assets/audio/music/07_end.mp3",
+    "bytes": 2821795,
+    "sha256": "511B249CAC68A4468397F65195F7D5845E1F75A7A6A0B2E2E0DDE70D20D5AA91"
+  },
+  {
+    "source": "8. 胜利主题《欢迎回家》.mp3",
+    "asset": "assets/audio/music/08_victory.mp3",
+    "bytes": 1317735,
+    "sha256": "B0B21755C4EFAD4EAF713416D625BB12B5729B18DF2076C723F8013EEEDC5636"
+  }
+]

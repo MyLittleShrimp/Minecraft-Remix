@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+kind = 1
+label = "骷髅射手"
+max_health = 8
+awareness = 290.0
+patrol_radius = 35.0
+contact_damage = 0

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+kind = 2
+label = "苦力帕"
+max_health = 10
+chase_speed = 60.0
+awareness = 190.0
+contact_damage = 0

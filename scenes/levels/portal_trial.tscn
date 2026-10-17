@@ -1,0 +1,56 @@
+[gd_scene load_steps=17 format=3]
+[ext_resource type="Script" path="res://scripts/levels/portal_trial.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/player/item_steve.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/world/portal_course.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/world/pixel_camera.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/world/portal_backdrop.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/ui/portal_hud.gd" id="6"]
+[ext_resource type="FontVariation" path="res://resources/ui_font.tres" id="7"]
+[ext_resource type="Resource" path="res://resources/enemies/zombie.tres" id="8"]
+[ext_resource type="Resource" path="res://resources/enemies/skeleton.tres" id="9"]
+[ext_resource type="Resource" path="res://resources/enemies/creeper.tres" id="10"]
+
+[ext_resource type="Resource" path="res://resources/items/red_mushroom.tres" id="11"]
+[ext_resource type="Resource" path="res://resources/items/apple.tres" id="12"]
+[ext_resource type="Resource" path="res://resources/items/emerald.tres" id="13"]
+
+[ext_resource type="Resource" path="res://resources/items/forest_emerald_cache.tres" id="14"]
+
+[ext_resource type="Resource" path="res://resources/enemies/skeleton_captain.tres" id="15"]
+[ext_resource type="Resource" path="res://resources/items/captain_trophy.tres" id="16"]
+
+[node name="PortalTrial" type="Node2D"]
+process_mode = 3
+process_physics_priority = 200
+script = ExtResource("1")
+campaign_level_id = &"tidal_ruins"
+ui_font = ExtResource("7")
+zombie_data = ExtResource("8")
+skeleton_data = ExtResource("9")
+creeper_data = ExtResource("10")
+mushroom_data = ExtResource("11")
+apple_data = ExtResource("12")
+emerald_data = ExtResource("13")
+cache_data = ExtResource("14")
+trophy_data = ExtResource("16")
+[node name="Backdrop" type="CanvasLayer" parent="."]
+layer = -10
+[node name="Art" type="Node2D" parent="Backdrop"]
+script = ExtResource("5")
+[node name="World" type="Node2D" parent="."]
+process_mode = 1
+[node name="Course" type="Node2D" parent="World"]
+script = ExtResource("3")
+ui_font = ExtResource("7")
+[node name="Steve" parent="World" instance=ExtResource("2")]
+position = Vector2(96, 288)
+[node name="Camera" type="Camera2D" parent="World"]
+position = Vector2(320, 180)
+process_callback = 0
+script = ExtResource("4")
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 10
+[node name="HUD" type="Node2D" parent="UI"]
+script = ExtResource("6")
+ui_font = ExtResource("7")
+

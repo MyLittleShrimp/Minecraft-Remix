@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/input/player_input_provider.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/player/steve_visual.gd" id="3"]
+[ext_resource type="Resource" path="res://resources/default_movement.tres" id="4"]
+[sub_resource type="RectangleShape2D" id="BodyShape"]
+size = Vector2(18, 44)
+
+[node name="Steve" type="CharacterBody2D" node_paths=PackedStringArray("input_provider")]
+collision_layer = 4
+collision_mask = 3
+floor_snap_length = 3.0
+slide_on_ceiling = false
+script = ExtResource("1")
+tuning = ExtResource("4")
+input_provider = NodePath("InputProvider")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -22)
+shape = SubResource("BodyShape")
+
+[node name="InputProvider" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="Visual" type="Node2D" parent="."]
+script = ExtResource("3")

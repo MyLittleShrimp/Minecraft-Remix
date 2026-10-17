@@ -1,0 +1,19 @@
+# Generated files and local toolchain
+.godot/
+.tools/
+.local/
+builds/
+artifacts/
+方块远征 OST/
+*.log
+*.tmp
+*.lnk
+*.zip
+*.exe
+*.pck
+*.mp4
+docs/media/*.import
+.DS_Store
+Thumbs.db
+.env
+.env.*

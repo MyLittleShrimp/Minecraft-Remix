@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="EnemyData" load_steps=2 format=3]
+[ext_resource type="Script" path="res://scripts/enemies/enemy_data.gd" id="1"]
+[resource]
+script = ExtResource("1")
+kind = 7
+label = "溺尸投手"
+max_health = 24
+patrol_speed = 25.0
+chase_speed = 62.0
+awareness = 340.0
+patrol_radius = 40.0
+contact_damage = 0
+aim_seconds = 0.8
+shot_recovery = 1.65
+arrow_speed = 280.0

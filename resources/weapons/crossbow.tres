@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="WeaponData" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/combat/weapon_data.gd" id="1"]
+[ext_resource type="Resource" path="res://resources/weapons/piercing_bolt.tres" id="2"]
+[resource]
+script = ExtResource("1")
+id = &"crossbow"
+label = "弩"
+kind = 2
+damage = 12
+charge_seconds = 0.95
+quick_cooldown = 0.45
+arrow_speed = 760.0
+charge_move_scale = 0.55
+ultimate = ExtResource("2")
