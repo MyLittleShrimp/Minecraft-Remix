@@ -8,7 +8,14 @@ Minecraft Remix（中文副标题：方块远征）是一款使用 Godot 制作�
 
 **Windows x64 · 键盘 / 手柄 · 七关主线 · 五种武器 · 十六首音乐**
 
-[下载 Windows 游戏](https://github.com/MyLittleShrimp/Minecraft-Remix/releases/tag/v0.2.0.66) · [安装说明](docs/INSTALLATION.md) · [游戏介绍](docs/GAME_OVERVIEW.md) · [截图画廊](docs/SCREENSHOTS.md) · [65 秒玩法预告](docs/TRAILER.md) · [从源码运行](docs/BUILDING.md)
+[下载 Windows 游戏](https://github.com/MyLittleShrimp/Minecraft-Remix/releases/tag/v0.2.0.73) · [安装说明](docs/INSTALLATION.md) · [游戏介绍](docs/GAME_OVERVIEW.md) · [截图画廊](docs/SCREENSHOTS.md) · [80 秒更新实机](docs/TRAILER.md) · [从源码运行](docs/BUILDING.md)
+
+## 0.73 有什么新变化
+
+- 巨剑剑光更饱满，三叉戟索敌落雷增加分叉电光与局部辉光。
+- 女巫红绿药水、末影人传送、凋灵聚能与撞击获得逐帧特效。
+- TNT 与苦力帕爆炸、恶魂火球反弹、拾取与实际回血反馈重新打磨。
+- 终章攻击表现也有升级，留待游戏中揭晓。本批主要更新视觉，保留既有战斗判定。
 
 ## 冒险里有什么
 
@@ -22,17 +29,17 @@ Minecraft Remix（中文副标题：方块远征）是一款使用 Godot 制作�
 
 ## 先看一段实机
 
-[![65 秒玩法预告封面](docs/media/trailer-cover.jpg)](docs/TRAILER.md)
+[![80 秒更新实机封面](docs/media/trailer-cover.jpg)](docs/TRAILER.md)
 
-预告展示顶砖吃蘑菇、五种武器、三道落雷、跑酷与机关，保留最终战和结局的悬念。完整 MP4 随 Release 提供；播放与素材说明见 [预告片页](docs/TRAILER.md)。
+新片重新录制 0.73 实机，展示剑光、落雷、女巫药水、传送、爆破、反弹和补给反馈，并保留最终战和结局的悬念。完整 MP4 随 Release 提供；播放与素材说明见 [预告片页](docs/TRAILER.md)。
 
 ## 开始游玩
 
-1. 打开 [v0.2.0.66 下载页](https://github.com/MyLittleShrimp/Minecraft-Remix/releases/tag/v0.2.0.66)，下载 `MinecraftRemix-v0.2.0.66-Windows-x64.zip`。
+1. 打开 [v0.2.0.73 下载页](https://github.com/MyLittleShrimp/Minecraft-Remix/releases/tag/v0.2.0.73)，下载 `MinecraftRemix-v0.2.0.73-Windows-x64.zip`。
 2. 完整解压到一个文件夹，双击 `MinecraftRemix.exe`。这是免安装便携版，无需安装 Godot 或 Minecraft。
 3. 从主菜单开始新远征，也可以选择单关游玩。第一次玩建议开启向导。
 
-当前测试版 **v0.2.0.66**，包含七关主线、七首 Boss 专曲、音乐开关与失败菜单焦点修复。详细变化见 [版本说明](docs/RELEASE_NOTES.md)。
+当前测试版 **v0.2.0.73**，集中更新武器、敌人、爆炸与补给特效；七关主线、十六首音乐、键盘与手柄支持继续保留。详细变化见 [版本说明](docs/RELEASE_NOTES.md)。
 
 | 操作 | 默认按键 |
 | --- | --- |

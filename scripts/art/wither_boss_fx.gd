@@ -46,6 +46,7 @@ static func lane(canvas: Node2D,boss: WitherBoss) -> void:
         if boss.dash_direction<0: at.x=left+width*boss.timer/1.1
         canvas.draw_rect(Rect2(at-Vector2(2,1),Vector2(4,3)),Color("fff3c9"))
 static func charge(canvas: Node2D,boss: WitherBoss) -> void:
+    EnemyVfxArt.wither_charge(canvas,boss.timer)
     var t:=clampf(1-boss.timer/1.1,0,1)
     for i in 3:
         var r:=48-i*7-t*9
@@ -61,12 +62,13 @@ static func charge(canvas: Node2D,boss: WitherBoss) -> void:
         for i in 6: points.append(Vector2(side*(22+i*4+sin(boss.visual_seconds*20+i)*3),-21+i*8).round())
         canvas.draw_polyline(points,Color(0.86,0.65,1,0.4+t*0.5),1)
 static func stream(canvas: Node2D,boss: WitherBoss) -> void:
+    EnemyVfxArt.wither_stream(canvas,boss.visual_seconds,boss.dash_direction)
     for lane_index in 3:
         var points:=PackedVector2Array()
         for i in 9:
             points.append(Vector2(-boss.dash_direction*(12+i*9),-16+lane_index*16+sin(i*1.7-boss.visual_seconds*36)*3).round())
-        canvas.draw_polyline(points,Color(0.47,0.22,0.81,0.22),7)
-        canvas.draw_polyline(points,Color("aa78eb"),2)
+        canvas.draw_polyline(points,Color(0.47,0.22,0.81,0.15),5)
+        canvas.draw_polyline(points,Color("aa78eb90"),1)
         if lane_index==1: canvas.draw_polyline(points,Color("e6d4ff"),1)
     for i in 14:
         var travel:=fposmod(boss.visual_seconds*260+i*11,100)
@@ -103,6 +105,7 @@ static func sweep(canvas: Node2D,boss: WitherBoss) -> void:
             canvas.draw_rect(Rect2(at,Vector2(2,2)),Color("f5bc95"))
 static func impact(canvas: Node2D,boss: WitherBoss) -> void:
     var at:=canvas.to_local(boss.impact_at)
+    EnemyVfxArt.wither_burst(canvas,at,boss.impact_left,boss.second_phase)
     var t:=1-boss.impact_left/0.42
     canvas.draw_arc(at,8+t*36,PI,TAU,18,Color(0.94,0.78,1,1-t),2)
     for i in 12:

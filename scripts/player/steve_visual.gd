@@ -31,4 +31,5 @@ func _draw() -> void:
     elif weapon!=null and not weapon.equipped().is_melee(): frame=21
     animation_frame=frame
     draw_rect(Rect2(-10,-2,20,3),Color(0.05,0.12,0.14,0.25))
-    ActionArt.actor(self,"steve",frame,46,actor.facing)
+    var direction := weapon.sword_facing if weapon != null and weapon.sword_time >= 0 else actor.facing
+    ActionArt.actor(self,"steve",frame,46,direction)

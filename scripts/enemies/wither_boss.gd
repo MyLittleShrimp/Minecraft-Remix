@@ -23,6 +23,7 @@ var dash_from:=Vector2.ZERO
 var dash_to:=Vector2.ZERO
 var dash_event: DamageEvent
 var dash_pending:=false
+var dash_impacted: Array[int]=[]
 var dash_pillars:=0
 var shattered_pillars:=0
 var melee_direction:=1
@@ -189,6 +190,7 @@ func begin_low() -> void:
     battle=Battle.DESCEND
 func begin_dash() -> void:
     clear_skulls()
+    dash_impacted.clear()
     position.y=DASH_Y
     dash_direction=1 if target.position.x>=position.x else -1
     facing=dash_direction
@@ -250,6 +252,11 @@ func damage_rect(area: Rect2,event: DamageEvent,cover: bool=false) -> void:
         if not hit.collider is CombatHurtbox: continue
         if cover and not space.intersect_ray(PhysicsRayQueryParameters2D.create(center(),hit.collider.global_position,1)).is_empty(): continue
         hit.collider.receive(event)
+        if event==dash_event and battle==Battle.DASH:
+            var receiver_id: int=hit.collider.get_instance_id()
+            if not dash_impacted.has(receiver_id):
+                dash_impacted.append(receiver_id)
+                WitherHitBurst.spawn(get_parent(),hit.collider.global_position,second_phase)
 func stun(seconds: float) -> void:
     clear_skulls()
     pending_shot=false
@@ -285,6 +292,7 @@ func _on_death() -> void:
     super._on_death()
 func reset_target() -> void:
     clear_skulls()
+    dash_impacted.clear()
     super.reset_target()
     active=false
     second_phase=false

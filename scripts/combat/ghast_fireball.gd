@@ -38,6 +38,8 @@ func reflect_attack(attack: DamageEvent, origin: Vector2) -> bool:
     if direction.length_squared()<1: direction=Vector2.RIGHT
     velocity=direction.normalized()*RETURN_SPEED
     lifetime=2.5
+    age=0.0
+    ActionBurst.spawn(get_parent(),global_position,&"reflect")
     if is_instance_valid(shooter): shooter.ball_reflected()
     queue_redraw()
     return true
@@ -45,7 +47,7 @@ func reflect_attack(attack: DamageEvent, origin: Vector2) -> bool:
 func receive_projectile(attack: DamageEvent) -> void:
     if not spent and not reflected and attack.faction==1:
         if is_instance_valid(shooter): shooter.ball_destroyed()
-        retire()
+        impact()
 
 func _physics_process(delta: float) -> void:
     if spent: return
@@ -76,14 +78,19 @@ func _physics_process(delta: float) -> void:
         var contacts:=get_world_2d().direct_space_state.intersect_shape(query,32)
         # Cover wins simultaneous contacts; no blast through a wall or lingering fire.
         if contacts.any(func(hit) -> bool: return hit.collider is PhysicsBody2D):
-            retire()
+            impact()
             return
         for hit in contacts:
             if hit.collider is CombatHurtbox:
                 hit.collider.receive(event)
-                retire()
+                impact()
                 return
     queue_redraw()
+
+func impact() -> void:
+    if spent: return
+    ActionBurst.spawn(get_parent(),global_position,&"return_hit" if reflected else &"fire_hit")
+    retire()
 
 func retire() -> void:
     if spent: return
@@ -94,11 +101,8 @@ func retire() -> void:
     queue_free()
 
 func _draw() -> void:
-    var direction:=velocity.normalized()
+    ActionVfxArt.fireball(self,velocity,age,reflected)
     var rim:=Color("7effec") if reflected else Color("ff623e")
-    for i in range(4,0,-1):
-        var at:=(-direction*(i*6.0)).round()
-        draw_rect(Rect2(at-Vector2(3,3),Vector2(6,6)),Color(rim,0.15+0.1*(4-i)))
     draw_colored_polygon(PackedVector2Array([Vector2(-9,-4),Vector2(-4,-9),Vector2(4,-9),Vector2(9,-4),Vector2(9,4),Vector2(4,9),Vector2(-4,9),Vector2(-9,4)]),rim)
     draw_rect(Rect2(-6,-6,12,12),Color("e9fff0") if reflected else Color("ffc05c"))
     draw_rect(Rect2(-3,-4,6,7),Color("fff6cd"))

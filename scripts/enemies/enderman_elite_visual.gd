@@ -7,6 +7,7 @@ func silhouette(at: Vector2,tint: Color,_pose: float,facing: int) -> void:
 func _draw() -> void:
     var actor:=get_parent() as EndermanElite
     if actor.state==RemixEnemy.State.DEAD: return
+    warp_residue(actor)
     var tint:=Color(1.7,1.5,1.9) if actor.flash_left>0 else Color.WHITE
     animation_frame=WarpedArt.warden_pose(actor)
     if actor.second_phase:
@@ -20,8 +21,10 @@ func _draw() -> void:
     if actor.warp_left>=0:
         var at:=actor.warp_to-actor.position
         var color:=Color("edb4ff")
+        EnemyVfxArt.warp(self,Vector2.ZERO,actor.warp_left,0.28)
+        EnemyVfxArt.warp(self,at,actor.warp_left,0.8)
         silhouette(at,Color(1.8,1.3,2.0,0.55),0,actor.locked_facing)
-        draw_rect(Rect2(at+Vector2(-24,-67),Vector2(48,67)),color,false,2)
+        EnemyVfxArt.warp_marker(self,at,actor.warp_left)
         EnderStrikeFX.warning(self,actor.attack_reach,actor.locked_facing,actor.warp_left,at,true)
         draw_string(actor.ui_font,at+Vector2(-28,-73),"真身 %.1f"%actor.warp_left,HORIZONTAL_ALIGNMENT_LEFT,-1,10,color)
         if actor.decoy.is_finite():

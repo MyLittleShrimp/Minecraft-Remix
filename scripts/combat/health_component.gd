@@ -5,6 +5,7 @@ extends Node
 
 signal health_changed(current: int, maximum: int)
 signal damaged(event: DamageEvent)
+signal healed(amount: int)
 signal died
 
 @export var max_health: int = 20
@@ -71,6 +72,7 @@ func heal(amount: int) -> int:
     if restored > 0:
         current += restored
         health_changed.emit(current, max_health)
+        healed.emit(restored)
     return restored
 
 func reset_health() -> void:

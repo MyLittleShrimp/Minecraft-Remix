@@ -8,6 +8,7 @@ var source: Node
 var spent := false
 var lifetime := 2.2
 var burst_left := 0.0
+var trail: Array[Vector2] = []
 func _ready() -> void:
     process_physics_priority=5
     add_to_group("projectiles")
@@ -18,6 +19,8 @@ func _physics_process(delta: float) -> void:
         queue_redraw()
         return
     lifetime-=delta
+    trail.append(global_position)
+    if trail.size()>6: trail.pop_front()
     var next:=global_position+velocity*delta+Vector2(0,0.5*GRAVITY*delta*delta)
     velocity.y+=GRAVITY*delta
     var query:=PhysicsRayQueryParameters2D.create(global_position,next,1|8)
@@ -35,7 +38,7 @@ func _physics_process(delta: float) -> void:
 func splash() -> void:
     if spent: return
     spent=true
-    burst_left=0.28
+    burst_left=EnemyVfxArt.POTION_BURST_SECONDS
     var shape:=CircleShape2D.new()
     shape.radius=radius
     var query:=PhysicsShapeQueryParameters2D.new()
@@ -60,11 +63,11 @@ func retire() -> void:
 func _draw() -> void:
     var color:=Color("9bea6a") if poisonous else Color("fb777d")
     if spent:
-        draw_arc(Vector2.ZERO,radius*(1.0-burst_left/0.4),0,TAU,16,Color(color,burst_left*2),2)
-        for i in 8:
-            var point:=Vector2.from_angle(i*TAU/8)*radius*(1.0-burst_left)
-            draw_rect(Rect2(point,Vector2(3,3)),color)
+        EnemyVfxArt.potion_burst(self,poisonous,burst_left,radius)
         return
+    for i in trail.size():
+        var alpha := 0.12+float(i)/trail.size()*0.35
+        draw_rect(Rect2(to_local(trail[i]).round()-Vector2.ONE,Vector2(2,2)),Color(color,alpha))
     draw_rect(Rect2(-5,-5,10,12),Color("18332c"))
     draw_rect(Rect2(-4,-3,8,9),color)
     draw_rect(Rect2(-2,-8,4,4),Color("d9dbb2"))

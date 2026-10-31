@@ -46,6 +46,10 @@ func detonate() -> void:
     for impact in impacts:
         if level.wither_boss.health.current<=0: break
         BlastQuery.apply([impact])
+    var effect:=BlastEffect.new()
+    effect.radius=112
+    get_parent().add_child(effect)
+    effect.global_position=global_position
     level.sound.play_effect(&"explosion")
 func _draw() -> void:
     var lever:=Vector2(lever_x-global_position.x,16)
@@ -60,7 +64,6 @@ func _draw() -> void:
     if fuse_left>0:
         draw_arc(Vector2.ZERO,112,PI,TAU,40,Color("ff9469"),2)
         draw_string(level.ui_font,Vector2(-16,-17),"%.1f秒"%fuse_left,HORIZONTAL_ALIGNMENT_LEFT,-1,10,Color("fff0c7"))
-    if blast_left>0: draw_circle(Vector2.ZERO,112*(1-blast_left/0.3),Color(1,0.6,0.25,blast_left))
     if available() and nearby():
         var settings: Node=get_node("/root/ControlSettings")
         var button: String=settings.hint("aim_up") if settings.gamepad_active() else "E"

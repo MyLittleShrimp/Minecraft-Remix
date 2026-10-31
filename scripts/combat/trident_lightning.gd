@@ -61,6 +61,10 @@ static func candidates(caster: RemixPlayer,faction: int,range_limit: float) -> A
 
 func _ready() -> void:
     process_physics_priority=5
+    var glow := Node2D.new()
+    glow.name = "Glow"
+    glow.set_script(preload("res://scripts/art/lightning_glow.gd"))
+    add_child(glow)
     add_to_group("projectiles")
     update_locks()
 
@@ -92,7 +96,7 @@ func _physics_process(delta: float) -> void:
         if age>=windup:
             strike()
             struck=true
-    if age>=windup+0.38: retire()
+    if age>=windup+PixelVfxArt.LIGHTNING_TAIL: retire()
     queue_redraw()
 
 func strike() -> void:
@@ -127,7 +131,6 @@ func retire() -> void:
 func _draw() -> void:
     for index in strike_points.size():
         var head:=to_local(head_points[index])
-        var center:=to_local(strike_points[index])
         var foot:=to_local(foot_points[index])
         var start:=to_local(Vector2(head_points[index].x,minf(sky_y,head_points[index].y-100)))
         if not struck:
@@ -136,17 +139,4 @@ func _draw() -> void:
             draw_polyline(PackedVector2Array([head+Vector2(-10,-7),head+Vector2(-10,-13),head+Vector2(10,-13),head+Vector2(10,-7)]),Color(0.6,1,0.95,0.6+0.4*glow),2)
             draw_colored_polygon(PackedVector2Array([head+Vector2(0,-5),head+Vector2(-3,-10),head+Vector2(3,-10)]),Color("f4f7cb"))
             continue
-        var alpha:=clampf(1-(age-windup)/0.38,0,1)
-        var points:=PackedVector2Array([start])
-        for step in range(1,13):
-            points.append(start.lerp(center,step/13.0)+Vector2(5 if (step+index)%2 else -5,0))
-        points.append(center)
-        draw_polyline(points,Color(0.12,0.54,0.75,alpha*0.6),9)
-        draw_polyline(points,Color(0.4,0.94,1,alpha),4)
-        draw_polyline(points,Color(0.98,1,0.91,alpha),2)
-        var width:=splash_radius*(0.45+0.55*(1-alpha))
-        draw_polyline(PackedVector2Array([foot+Vector2(-width,0),foot+Vector2(0,-6),foot+Vector2(width,0),foot+Vector2(0,6),foot+Vector2(-width,0)]),Color(0.46,1,0.94,alpha),2)
-        for spark in 6:
-            var angle:=spark*TAU/6
-            var at:=center+Vector2(cos(angle),sin(angle))*18*(1-alpha)
-            draw_rect(Rect2(at,Vector2(2,3)),Color(0.9,1,0.72,alpha))
+        PixelVfxArt.lightning(self,age-windup,start,head,foot)

@@ -32,14 +32,18 @@ func _physics_process(delta: float) -> void:
         for hit in contacts:
             if hit.collider is PhysicsBody2D:
                 if hit.collider is WitherPillar: hit.collider.absorb_skull()
-                retire()
+                explode()
                 return
         for hit in contacts:
             if hit.collider is CombatHurtbox:
                 hit.collider.receive(event)
-                retire()
+                explode()
                 return
     queue_redraw()
+func explode() -> void:
+    if spent: return
+    WitherHitBurst.spawn(get_parent(),global_position,shooter.second_phase)
+    retire()
 func retire() -> void:
     if spent: return
     spent=true

@@ -1,12 +1,35 @@
 extends Node2D
 ## Generated key poses; danger markers still follow authoritative combat state.
 var animation_frame:=0
+var residue_left := 0.0
+var observed_teleports := -1
+var previous_position := Vector2.ZERO
+var departure := Vector2.ZERO
+
+func _process(delta: float) -> void:
+    var actor := get_parent() as EndermanEnemy
+    residue_left=maxf(0,residue_left-delta)
+    if observed_teleports>=0 and actor.teleports>observed_teleports:
+        departure=previous_position
+        residue_left=0.24
+    elif actor.teleports<observed_teleports or actor.state==RemixEnemy.State.DEAD:
+        residue_left=0
+    observed_teleports=actor.teleports
+    previous_position=actor.global_position
+    queue_redraw()
+
+func warp_residue(actor: EndermanEnemy) -> void:
+    if residue_left<=0: return
+    var alpha := residue_left/0.24*0.65
+    EnemyVfxArt.warp(self,to_local(departure),0.24-residue_left,alpha*0.5)
+    EnemyVfxArt.warp(self,Vector2.ZERO,0.24-residue_left,alpha)
 func silhouette(at: Vector2,tint: Color,_pose: float,facing: int) -> void:
     WarpedArt.draw_actor(self,"enderman",7,facing,tint,at)
 
 func _draw() -> void:
     var actor:=get_parent() as EndermanEnemy
     if actor.state==RemixEnemy.State.DEAD: return
+    warp_residue(actor)
     var tint:=Color(1.7,1.5,1.9) if actor.flash_left>0 else Color.WHITE
     animation_frame=WarpedArt.enderman_pose(actor)
     WarpedArt.draw_actor(self,"enderman",animation_frame,actor.facing,tint)
@@ -24,9 +47,10 @@ func _draw() -> void:
         draw_line(Vector2(-16,-9),Vector2(16,-9),Color("c3a4e1"),2)
     if actor.warp_left>=0:
         var at:=actor.warp_to-actor.global_position
+        EnemyVfxArt.warp(self,Vector2.ZERO,actor.warp_left,0.28)
+        EnemyVfxArt.warp(self,at,actor.warp_left)
         silhouette(at,Color(1.8,1.3,2.0,0.45),0,actor.facing)
-        draw_rect(Rect2(at+Vector2(-24,-65),Vector2(48,65)),Color("c985ff"),false,1)
-        draw_line(at+Vector2(-24,-2),at+Vector2(24,-2),Color("e4a9ff"),3)
+        EnemyVfxArt.warp_marker(self,at,actor.warp_left)
         draw_string(actor.ui_font,at+Vector2(-30,20 if actor.warp_to.y<205 else -70),"落点 %.1f"%actor.warp_left,HORIZONTAL_ALIGNMENT_LEFT,-1,10,Color("f1d3ff"))
     if actor.state==RemixEnemy.State.AIM or actor.strike_flash>0:
         if actor.strike_flash>0:

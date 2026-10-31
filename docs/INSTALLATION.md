@@ -2,9 +2,9 @@
 
 ## Windows 免安装版
 
-当前版本：**v0.2.0.66 / Windows x64**。
+当前版本：**v0.2.0.73 / Windows x64**。
 
-1. 在本仓库 [Releases 下载页面](https://github.com/MyLittleShrimp/Minecraft-Remix/releases/tag/v0.2.0.66)下载 `MinecraftRemix-v0.2.0.66-Windows-x64.zip`。自动提供的 **Source code (zip)** 是源码，不是可直接运行的游戏。
+1. 在本仓库 [Releases 下载页面](https://github.com/MyLittleShrimp/Minecraft-Remix/releases/tag/v0.2.0.73)下载 `MinecraftRemix-v0.2.0.73-Windows-x64.zip`。自动提供的 **Source code (zip)** 是源码，不是可直接运行的游戏。
 2. 右键 ZIP 选择“全部解压”。不要在压缩包预览窗口中直接启动。
 3. 在解压目录双击 `MinecraftRemix.exe`。
 
@@ -46,4 +46,4 @@ EXE 与 `MinecraftRemix.pck` 必须同目录；请保留 README、图标和 lega
 
 另一物理设备的完整兼容性验收与最低配置尚未完成。反馈时请注明具体版本。
 
-Release 附带 `SHA256SUMS.txt`，可用 PowerShell 命令 `Get-FileHash .\MinecraftRemix-v0.2.0.66-Windows-x64.zip -Algorithm SHA256` 与表中同名文件核对。
+Release 附带 `SHA256SUMS.txt`，可用 PowerShell 命令 `Get-FileHash .\MinecraftRemix-v0.2.0.73-Windows-x64.zip -Algorithm SHA256` 与表中同名文件核对。

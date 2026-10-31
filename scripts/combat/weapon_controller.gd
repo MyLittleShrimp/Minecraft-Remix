@@ -49,6 +49,10 @@ func configure_loadout(ids: Array) -> void:
 
 func _ready() -> void:
     process_physics_priority = -10
+    var sword_vfx := Node2D.new()
+    sword_vfx.name = "SwordVfx"
+    sword_vfx.set_script(preload("res://scripts/art/sword_vfx.gd"))
+    add_child(sword_vfx)
     for weapon in weapons:
         cooldowns[weapon.id] = 0.0
     health.damaged.connect(_on_damaged)
@@ -334,8 +338,7 @@ func _draw() -> void:
                 draw_rect(Rect2(Vector2(cos(phase)*25,-23+sin(phase)*25),Vector2(3,3)),Color("b8ffe4"))
         draw_set_transform(Vector2(direction*9,-23),tilt*direction,Vector2(direction,1)*factor)
         RemixArt.icon(self,4,Rect2(-3,-27,33,33))
-        if sword_time>=equipped().windup and sword_time<equipped().windup+equipped().active_seconds:
-            draw_arc(Vector2(3,0),32,-0.8,0.7,7,Color("b8ffe4") if enlarged else Color(0.84,0.94,0.73,0.6),2)
+        draw_set_transform(Vector2.ZERO)
     elif equipped().kind==WeaponData.Kind.TRIDENT:
         _draw_trident()
     elif equipped().kind == WeaponData.Kind.AXE:

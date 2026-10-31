@@ -35,3 +35,5 @@ func _draw() -> void:
         draw_arc(Vector2(81,8),24,-2.5,1.9,18,Color("b9f2cd"),1)
         draw_line(Vector2(68,29),Vector2(95,29),Color("b9f2cd"),2)
     draw_set_transform(Vector2.ZERO)
+    # Mouth energy and melee arcs remain readable in front of the body.
+    DragonEffects.draw(self,b,true)

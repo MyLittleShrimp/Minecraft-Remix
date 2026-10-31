@@ -24,6 +24,18 @@ var modal_return_index:=1
 @onready var settings: Node = get_node("/root/ControlSettings")
 
 func _ready() -> void:
+    if "--dragon-vfx-trial" in OS.get_cmdline_user_args():
+        get_tree().change_scene_to_file.call_deferred("res://scenes/levels/dragon_lab.tscn")
+        return
+    if "--action-vfx-trial" in OS.get_cmdline_user_args():
+        get_tree().change_scene_to_file.call_deferred("res://scenes/levels/action_vfx_lab.tscn")
+        return
+    if "--enemy-vfx-trial" in OS.get_cmdline_user_args():
+        get_tree().change_scene_to_file.call_deferred("res://scenes/levels/enemy_vfx_lab.tscn")
+        return
+    if "--vfx-trial" in OS.get_cmdline_user_args():
+        get_tree().change_scene_to_file.call_deferred("res://scenes/levels/pixel_vfx_lab.tscn")
+        return
     MusicDirector.play_track("menu")
     process_mode=Node.PROCESS_MODE_ALWAYS
     get_tree().paused=false

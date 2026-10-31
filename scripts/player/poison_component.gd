@@ -35,7 +35,4 @@ func _physics_process(delta: float) -> void:
     queue_redraw()
 func _draw() -> void:
     if remaining<=0: return
-    for i in 4:
-        var x := -13+posmod(i*11,27)
-        var y := -12-posmod(int(remaining*16)+i*13,34)
-        draw_rect(Rect2(x,y,3,3),Color("95e679"))
+    EnemyVfxArt.poison_status(self,remaining,tick_left)

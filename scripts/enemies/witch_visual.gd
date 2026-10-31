@@ -20,7 +20,14 @@ func _draw() -> void:
         for point in witch.marks:
             var local:=to_local(point)
             var radius:=34.0 if witch.queen else 30.0
-            draw_line(local-Vector2(radius,-6),local+Vector2(radius,6),Color(color,0.8),3)
+            # Sparse, flat landing glyph: width retains the real splash radius.
+            draw_polyline(PackedVector2Array([local+Vector2(-radius,4),local+Vector2(0,-3),local+Vector2(radius,4),local+Vector2(0,11),local+Vector2(-radius,4)]),Color(color,0.75),1)
             draw_line(local+Vector2(-radius,-1),local+Vector2(-radius,10),color,2)
             draw_line(local+Vector2(radius,-1),local+Vector2(radius,10),color,2)
+            if witch.cast_poison:
+                draw_arc(local+Vector2(0,4),4,0,TAU,12,color,1)
+                draw_rect(Rect2(local+Vector2(-1,3),Vector2(2,2)),Color("e4ffc3"))
+            else:
+                draw_line(local+Vector2(-4,0),local+Vector2(4,8),color,2)
+                draw_line(local+Vector2(4,0),local+Vector2(-4,8),color,2)
         draw_string(witch.ui_font,Vector2(-22,-77 if witch.queen else -78),"剧毒！" if witch.cast_poison else "药水！",HORIZONTAL_ALIGNMENT_LEFT,-1,10,color)

@@ -226,6 +226,7 @@ func detonate() -> void:
     for brick in fragile_impacts:
         brick.break_brick()
     var effect := BlastEffect.new()
+    effect.creeper = true
     effect.position = get_parent().to_local(blast_center)
     effect.radius = data.blast_radius
     get_parent().add_child(effect)
